@@ -1,0 +1,331 @@
+@import "./utilities/style";
+
+.container {
+  width: 100vw;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: toRem(30) toRem(24);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
+  width: toRem(540);
+}
+
+.top-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 8px;
+  .app-name {
+    font-size: 32px;
+    line-height: 29px;
+    letter-spacing: -0.533333px;
+  }
+
+  .theme {
+    display: flex;
+    align-items: center;
+    column-gap: toRem(26);
+
+    &:nth-of-type(1) {
+      font-size: 12px;
+      line-height: 11px;
+
+      text-align: center;
+      letter-spacing: 1px;
+    }
+  }
+
+  .btn-container {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    width: 72px;
+    height: 26px;
+
+    border-radius: 13px;
+    padding: 0 5px;
+
+    .btn {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+
+      position: absolute;
+    }
+
+    &.theme1 {
+      .btn {
+        transition: all 0.4s ease-in-out;
+        right: calc(100% - 21px);
+      }
+    }
+    &.theme2 {
+      .btn {
+        transition: all 0.4s ease-in-out;
+        right: calc(50% - 8px);
+      }
+    }
+    &.theme3 {
+      .btn {
+        transition: all 0.4s ease-in-out;
+        right: 5px;
+      }
+    }
+
+    ul {
+      position: absolute;
+      top: -70%;
+      left: 0;
+      right: 0;
+      padding: 0 5px;
+
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+
+      li {
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 13px;
+      }
+    }
+  }
+}
+
+.input-container {
+  width: 100%;
+  height: toRem(128);
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  padding: 0 toRem(32);
+
+  #input {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    width: 100%;
+    overflow: hidden;
+    font-size: 56px;
+    line-height: 52px;
+    letter-spacing: -0.933333px;
+  }
+
+  @media only screen and (max-width: $Mobile) {
+    height: toRem(88);
+
+    #input {
+      font-size: 40px;
+      line-height: 37px;
+      letter-spacing: -0.666667px;
+    }
+  }
+}
+
+.keys-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  padding: 32px 30px;
+  border-radius: 10px;
+
+  .top-keys,
+  .bottom-keys {
+    display: grid;
+    gap: 24px;
+  }
+  .top-keys {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+  }
+  .bottom-keys {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .item {
+    font-size: 40px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -0.666667px;
+
+    padding: 12px;
+    border-radius: 10px;
+
+    cursor: pointer;
+    &:active {
+      transform: scale(0.9);
+      box-shadow: none !important;
+      transition: transform 0.4s ease-in-out;
+    }
+  }
+
+  @media only screen and (max-width: $Mobile) {
+    padding: 24px;
+
+    .top-keys,
+    .bottom-keys {
+      gap: 12px;
+    }
+
+    .item {
+      font-size: 32px;
+      line-height: 29px;
+      letter-spacing: -0.533333px;
+    }
+  }
+}
+
+//### THEMES
+
+//###THEME 1
+.theme1 {
+  background-color: $Very-dark-desaturated-blue-main-background;
+  transition: all 0.6s ease-in-out;
+
+  > * {
+    transition: all 0.8 ease-in-out;
+  }
+
+  .text {
+    color: $White;
+  }
+
+  .key {
+    color: $Very-dark-grayish-blue;
+    background-color: $Light-grayish-orange-key-background;
+    box-shadow: inset 0px -4px 0px $Grayish-orange-key-shadow;
+
+    &--different,
+    &--different-plus {
+      color: $White;
+    }
+
+    &--different {
+      background-color: $Desaturated-dark-blue-key-background;
+      box-shadow: inset 0px -4px 0px $Desaturated-dark-blue-key-shadow;
+    }
+    &--different-plus {
+      background-color: $Red-key-background-toggle;
+      box-shadow: inset 0px -4px 0px $Dark-red-key-shadow;
+    }
+  }
+
+  .key-container {
+    background-color: $Very-dark-desaturated-blue-toggle-background-keypad-background;
+
+    .btn {
+      background-color: $Red-key-background-toggle;
+    }
+  }
+
+  .screen {
+    background-color: $Very-dark-desaturated-blue-screen-background;
+  }
+}
+//###THEME 2
+.theme2 {
+  background-color: $Light-gray-main-background;
+  transition: all 0.6s ease-in-out;
+
+  > * {
+    transition: all 0.8 ease-in-out;
+  }
+
+  .text {
+    color: $Very-dark-grayish-yellow;
+  }
+
+  .key {
+    color: $Very-dark-grayish-yellow;
+    background-color: $Light-grayish-yellow-key-background;
+    box-shadow: inset 0px -4px 0px $Dark-grayish-orange-key-shadow;
+
+    &--different,
+    &--different-plus {
+      color: $White;
+    }
+
+    &--different {
+      background-color: $Dark-moderate-cyan-key-background;
+      box-shadow: inset 0px -4px 0px $Very-dark-cyan-key-shadow;
+    }
+    &--different-plus {
+      background-color: $Orange-key-background-toggle;
+      box-shadow: inset 0px -4px 0px $Dark-orange-key-shadow;
+    }
+  }
+
+  .key-container {
+    background-color: $Grayish-red-toggle-background-keypad-background;
+    .btn {
+      background-color: $Orange-key-background-toggle;
+    }
+  }
+
+  .screen {
+    background-color: $Very-light-gray-screen-background;
+  }
+}
+//###THEME 3
+.theme3 {
+  background-color: $Very-dark-violet-main-background;
+  transition: all 0.6s ease-in-out;
+
+  > * {
+    transition: all 0.8 ease-in-out;
+  }
+
+  .text {
+    color: $Light-yellow;
+  }
+
+  .key {
+    color: $Light-yellow;
+    background-color: $Very-dark-violet-key-background;
+    box-shadow: inset 0px -4px 0px $Dark-agenta-key-shadow;
+
+    &--different {
+      color: $White;
+    }
+    &--different-plus {
+      color: $Very-dark-blue;
+    }
+
+    &--different {
+      background-color: $Dark-violet-key-background;
+      box-shadow: inset 0px -4px 0px $Vivid-magenta-key-shadow;
+    }
+    &--different-plus {
+      background-color: $Pure-cyan-key-background-toggle;
+      box-shadow: inset 0px -4px 0px $Soft-cyan-key-shadow;
+    }
+  }
+
+  .key-container {
+    background-color: $Very-dark-violet-toggle-background-keypad-background-screen-background;
+    .btn {
+      background-color: $Pure-cyan-key-background-toggle;
+    }
+  }
+
+  .screen {
+    background-color: $Very-dark-violet-toggle-background-keypad-background-screen-background;
+  }
+}
